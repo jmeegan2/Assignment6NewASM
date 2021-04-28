@@ -99,14 +99,32 @@ mov edx, offset practiceOneArm ;-(integer_1 + integer_2)
 call writestring
 call crlf
 mov edx, offset intermediate_1Text
-	call writestring
-	MOV EDX, OFFSET phrase_plus
-	CALL WriteString
+call writestring
+MOV EDX, OFFSET phrase_plus
+CALL WriteString
 MOV intermediate_1, 0d
 mov eax, integer_1
 add eax, integer_2
 MOV intermediate_1, eax
-	call writedec
+call writedec
+call crlf 
+
+mov edx,offset intermediate_2text
+call writestring
+mov edx, offset phrase_plus
+call writeString
+MOV intermediate_2, 0d
+mov eax, intermediate_2
+call writedec
+call crlf
+
+mov edx,offset intermediate_3text
+call writestring
+mov edx, offset phrase_plus
+call writeString
+MOV intermediate_3, 0d
+mov eax, intermediate_3
+call writedec
 call crlf
 
 ;Start of Practice Expression #02
