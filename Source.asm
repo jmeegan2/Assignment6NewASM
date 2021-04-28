@@ -19,15 +19,15 @@ integer_2Text		BYTE		"The value in 'integer_2' is    : ",0
 integer_2			DWORD		50d
 
 byte_1Text			BYTE		"The value in 'byte_1' is       : ",0
-byte_1				BYTE		30d
+byte_1				BYTE		30d, 0
 byte_2Text			BYTE		"The value in 'byte_2' is       : ",0
-byte_2				BYTE		70
+byte_2				BYTE		70d, 0
 
-intermediate_1Text  byte		"The value in 'intermiate_1' is :", 0
+intermediate_1Text  byte		"The value in 'intermediate_1' is :", 0
 intermediate_1		DWORD		0
-intermediate_2Text  byte		"The value in 'intermiate_2' is :", 0
+intermediate_2Text  byte		"The value in 'intermediate_2' is :", 0
 intermediate_2		DWORD		0
-intermediate_3Text  byte		"The value in 'intermiate_3' is :", 0
+intermediate_3Text  byte		"The value in 'intermediate_3' is :", 0
 intermediate_3		DWORD		0
 
 phrasePracticeOne	byte		"Practice Expression #01",0
@@ -38,7 +38,9 @@ phrasePracticeFour	byte		"Practice Expression #04",0
 practiceOneARM		byte		"-(integer_1 + integer_2)", 0		
 practiceTwoARM		byte		"integer_2 - integer_1 + 2(integer_2)", 0
 practiceThreeARM    byte		"integer_1 + byte_1 - integer_2",0
-practiceFourARM			byte	"byte_2 - byte_1 + 2(integer_2 - byte_1)",0
+practiceFourARM		byte		"byte_2 - byte_1 + 2(integer_2 - byte_1)",0
+
+line				byte		"------------------------------------" ,0
 
 phrase_plus			BYTE		"+", 0
 phrase_minus		BYTE		"-", 0
@@ -55,7 +57,7 @@ main PROC
 	MOV EDX, OFFSET phrase_plus
 	CALL WriteString
 	MOV EAX, integer_1
-	;idkkkk
+	
 	CALL WriteDec
 	call crlf
 
@@ -83,8 +85,65 @@ main PROC
 	movzx eax, byte_2
 	call writedec
 	call crlf
+	call crlf
 
+; Start of Practice Expression #01
 
+mov edx, offset phrasePracticeOne
+call writestring
+call crlf
+mov edx, offset line
+call writestring
+call crlf
+mov edx, offset practiceOneArm ;-(integer_1 + integer_2)
+call writestring
+call crlf
+mov edx, offset intermediate_1Text
+	call writestring
+	MOV EDX, OFFSET phrase_plus
+	CALL WriteString
+MOV intermediate_1, 0d
+mov eax, integer_1
+add eax, integer_2
+MOV intermediate_1, eax
+	call writedec
+call crlf
+
+;Start of Practice Expression #02
+mov edx, offset phrasePracticeTwo
+call writestring
+call crlf
+mov edx, offset line
+call writestring
+call crlf
+mov edx, offset practiceTwoArm ;-(intermediate_1)
+call writestring
+call crlf
+call crlf
+
+;Start of Practice Expression #03
+mov edx, offset phrasePracticeThree
+call writestring
+call crlf
+mov edx, offset line
+call writestring
+call crlf
+mov edx, offset practiceThreeArm ;integer_1 - integer_1 + 2(integer_2)
+call writestring
+call crlf
+call crlf
+
+;Start of Practice Expression #04
+mov edx, offset phrasePracticeFour
+call writestring
+call crlf
+mov edx, offset line
+call writestring
+call crlf
+mov edx, offset practiceFourArm ;integer_2 - integer_1 + intermediate_1
+call writestring
+call crlf
+call crlf
 
 
 
