@@ -225,8 +225,9 @@ call writestring
 MOV EDX, OFFSET phrase_plus
 CALL WriteString
 MOV intermediate_1, 0d
-mov eax, integer_2
-sub eax, 30d
+movzx eax, byte_1
+NEG eax
+add eax, integer_2
 MOV intermediate_1, eax
 call writedec
 call crlf 
@@ -259,13 +260,5 @@ call crlf
 	; Return to OS.
 	INVOKE ExitProcess, 0
 main ENDP
-
-showOperandContents PROC
-	; YOUR CODE GOES HERE...
-showOperandContents ENDP
-
-showIntermediateContents PROC
-	; YOUR CODE GOES HERE...
-showIntermediateContents ENDP
 
 END main
