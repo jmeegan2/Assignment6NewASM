@@ -19,9 +19,9 @@ integer_2Text		BYTE		"The value in 'integer_2' is    : ",0
 integer_2			DWORD		50d
 
 byte_1Text			BYTE		"The value in 'byte_1' is       : ",0
-byte_1				BYTE		30d, 0
+byte_1				BYTE		30
 byte_2Text			BYTE		"The value in 'byte_2' is       : ",0
-byte_2				BYTE		70d, 0
+byte_2				BYTE		70
 
 intermediate_1Text  byte		"The value in 'intermediate_1' is :", 0
 intermediate_1		DWORD		0
@@ -117,7 +117,7 @@ MOV intermediate_2, 0d
 mov eax, intermediate_2
 call writedec
 call crlf
-
+																	
 mov edx,offset intermediate_3text
 call writestring
 mov edx, offset phrase_plus
@@ -125,6 +125,7 @@ call writeString
 MOV intermediate_3, 0d
 mov eax, intermediate_3
 call writedec
+call crlf
 call crlf
 
 ;Start of Practice Expression #02
@@ -134,9 +135,39 @@ call crlf
 mov edx, offset line
 call writestring
 call crlf
-mov edx, offset practiceTwoArm ;-(intermediate_1)
+mov edx, offset practiceTwoArm ;integer_2 - integer_1 + 2(integer_2)
 call writestring
 call crlf
+mov edx, offset intermediate_1Text
+call writestring
+MOV EDX, OFFSET phrase_plus
+CALL WriteString
+MOV intermediate_1, 0d
+mov eax, integer_2
+add eax, integer_2
+MOV intermediate_1, eax
+call writedec
+call crlf 
+
+mov edx,offset intermediate_2text
+call writestring
+mov edx, offset phrase_plus
+call writeString
+MOV intermediate_2, 0d
+mov eax, intermediate_2
+call writedec
+call crlf
+																	
+mov edx,offset intermediate_3text
+call writestring
+mov edx, offset phrase_plus
+call writeString
+MOV intermediate_3, 0d
+mov eax, intermediate_3
+call writedec
+call crlf
+
+
 call crlf
 
 ;Start of Practice Expression #03
@@ -146,8 +177,36 @@ call crlf
 mov edx, offset line
 call writestring
 call crlf
-mov edx, offset practiceThreeArm ;integer_1 - integer_1 + 2(integer_2)
+mov edx, offset practiceThreeArm ;integer_1 + byte_1 - integer_2
 call writestring
+call crlf
+mov edx, offset intermediate_1Text
+call writestring
+MOV EDX, OFFSET phrase_plus
+CALL WriteString
+MOV intermediate_1, 0d
+movzx eax, byte_1
+add eax, integer_1
+MOV intermediate_1, eax
+call writedec
+call crlf 
+
+mov edx,offset intermediate_2text
+call writestring
+mov edx, offset phrase_plus
+call writeString
+MOV intermediate_2, 40d
+mov eax, intermediate_2
+call writedec
+call crlf
+																	
+mov edx,offset intermediate_3text
+call writestring
+mov edx, offset phrase_plus
+call writeString
+MOV intermediate_3, 0d
+mov eax, intermediate_3
+call writedec
 call crlf
 call crlf
 
@@ -158,8 +217,38 @@ call crlf
 mov edx, offset line
 call writestring
 call crlf
-mov edx, offset practiceFourArm ;integer_2 - integer_1 + intermediate_1
+mov edx, offset practiceFourArm ; byte_2 – byte_1 + 2(integer_2 – byte_1)
 call writestring
+call crlf
+mov edx, offset intermediate_1Text
+call writestring
+MOV EDX, OFFSET phrase_plus
+CALL WriteString
+MOV intermediate_1, 0d
+mov eax, integer_2
+sub eax, 30d
+MOV intermediate_1, eax
+call writedec
+call crlf 
+
+mov edx,offset intermediate_2text
+call writestring
+mov edx, offset phrase_plus
+call writeString
+MOV intermediate_2, 0d
+mov eax, intermediate_1		
+add eax, intermediate_1
+mov intermediate_2, eax
+call writedec
+call crlf
+																	
+mov edx,offset intermediate_3text
+call writestring
+mov edx, offset phrase_plus
+call writeString
+MOV intermediate_3, 0d
+mov eax, intermediate_3
+call writedec
 call crlf
 call crlf
 
